@@ -15,7 +15,7 @@ apply plugin: 'org.springframework.boot'
 
 jar {
     baseName = 'gs-spring-boot'
-    version =  '0.1.0'
+    version = '0.1.0'
 }
 
 repositories {
@@ -38,6 +38,9 @@ dependencies {
 
     //Templates with Thymeleaf
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '1.5.2.RELEASE'
+
+    //Encoder for passwords
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
 
     //Junit Test
     testCompile group: 'junit', name: 'junit', version: '4.12'
