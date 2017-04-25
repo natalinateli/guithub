@@ -26,12 +26,19 @@ public class IndexController {
     return "index";
   }
 
-  //Controller will add new user to Data Base and redirect us to /
-  @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-  public String addUser(@RequestParam("name") String name) {
-    User newUser = new User();
-    newUser.setUsername(name);
-    userService.saveAndFlush(newUser);
+  //Controller will reg new user and redirect us to "/"
+  @RequestMapping(value = "/reg", method = RequestMethod.POST)
+  public String regUser(@RequestParam("name") String name,
+      @RequestParam("password") String password) {
+
+    return "redirect:/";
+  }
+
+  //Controller will login user and redirect us to "/"
+  @RequestMapping(value = "/login", method = RequestMethod.POST)
+  public String loginUser(@RequestParam("name") String name,
+      @RequestParam("password") String password) {
+
     return "redirect:/";
   }
 
