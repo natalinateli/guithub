@@ -13,16 +13,20 @@
   <span th:text="${user.id}">user id</span> <span th:text="${user.username}">user names</span>
 </div>
 
+<div>
+  <span th:if="${massage}" th:text="${massage}"></span>
+</div>
+
 <h2>Registrate new user:</h2>
 <form method="post" action="/reg">
-  <input type="text" name="name"/>
+  <input type="text" name="username"/>
   <input type="password" name="password"/>
   <input type="submit"/>
 </form>
 
 <h2>Login:</h2>
 <form method="post" action="/login">
-  <input type="text" name="name"/>
+  <input type="text" name="username"/>
   <input type="password" name="password"/>
   <input type="submit"/>
 </form>

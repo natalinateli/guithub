@@ -26,6 +26,7 @@ public class RegController {
   // life period of cookies
   private static final int COOKIE_AGE = 2693743;
 
+  //Controller will reg new user and redirect us to "/"
   @RequestMapping(value = "/reg", method = RequestMethod.POST)
   String getRegitrationNewUser(@CookieValue(name = "param", required = false) String cookieReg,
       @RequestParam(value = "username") String username,
