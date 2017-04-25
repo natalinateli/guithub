@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-//Simple tet controller
+//Simple test controller
 @Controller
 public class IndexController {
 
@@ -26,21 +26,6 @@ public class IndexController {
     return "index";
   }
 
-  //Controller will reg new user and redirect us to "/"
-  @RequestMapping(value = "/reg", method = RequestMethod.POST)
-  public String regUser(@RequestParam("name") String name,
-      @RequestParam("password") String password) {
-
-    return "redirect:/";
-  }
-
-  //Controller will login user and redirect us to "/"
-  @RequestMapping(value = "/login", method = RequestMethod.POST)
-  public String loginUser(@RequestParam("name") String name,
-      @RequestParam("password") String password) {
-
-    return "redirect:/";
-  }
 
   //Controller will delete  user by ID from Data Base and redirect us to /
   @RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
