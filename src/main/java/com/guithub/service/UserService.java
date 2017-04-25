@@ -13,4 +13,10 @@ public interface UserService {
   User findOne(long id);
 
   void deleteUser(long id);
+
+  User getOne(String username);
+
+  String password(String username);
+
+  int ifUserExist(String username);
 }

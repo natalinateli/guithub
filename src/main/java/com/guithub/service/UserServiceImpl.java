@@ -33,4 +33,19 @@ public class UserServiceImpl implements UserService {
   public void deleteUser(long id) {
     userRepository.delete(id);
   }
+
+  @Override
+  public User getOne(String username) {
+    return userRepository.getOne(username);
+  }
+
+  @Override
+  public String password(String username) {
+    return userRepository.password(username);
+  }
+
+  @Override
+  public int ifUserExist(String username) {
+    return userRepository.ifUserExist(username);
+  }
 }
