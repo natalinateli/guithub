@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8"/>
-  <title>Hello</title>
+  <title>Index</title>
+  <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
 </head>
 <body>
 
-<h1>Welcome <span th:text="${username}">Anonim</span>to GuitHub</h1>
+<h1>Welcome <span th:text="${username}">Anonim</span> to GuitHub</h1>
 <h2>Here is the list of all our users from DB:</h2>
 
 <div th:each="user : ${users}">
@@ -19,24 +20,24 @@
 
 <h2>Registrate new user:</h2>
 <form method="post" action="/reg">
-  <input type="text" name="username"/>
-  <input type="password" name="password"/>
-  <input type="submit"/>
+  <div>Username:<input type="text" name="username"/></div>
+  <div>Password:<input type="password" name="password"/></div>
+  <div><input type="submit" value="Regístrate"/></div>
 </form>
 
 <h2>Login:</h2>
 <form method="post" action="/login">
-  <input type="text" name="username"/>
-  <input type="password" name="password"/>
-  <input type="submit"/>
+  <div>Username:<input type="text" name="username"/></div>
+  <div>Password:<input type="password" name="password"/></div>
+  <div><input type="submit" value="Login"/></div>
 </form>
 
 <a href="/exit">Exit</a>
 
 <h2>Delete user by ID:</h2>
 <form method="post" action="/deleteuser">
-  <input type="text" name="id"/>
-  <input type="submit"/>
+  <div>ID:<input type="text" name="id"/></div>
+  <div><input type="submit"/></div>
 </form>
 
 </body>
