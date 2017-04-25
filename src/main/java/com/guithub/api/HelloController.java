@@ -11,13 +11,13 @@ import java.util.List;
 @RestController
 public class HelloController {
 
-    @Autowired
-    UserService userService;
+  @Autowired
+  UserService userService;
 
-    @RequestMapping("/users")
-    public List<User> index() {
-        List<User> users = userService.findAll();
-        return users;
-    }
+  @RequestMapping("/users")
+  public List<User> index() {
+    List<User> users = userService.findAll();
+    return users;
+  }
 
 }
