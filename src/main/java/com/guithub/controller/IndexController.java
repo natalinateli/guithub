@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+//Simple tet controller
 @Controller
 public class IndexController {
 
   @Autowired
   UserService userService;
 
+  //Controller will return Index Page with list of Users from Data Base
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String getIndexPage(Model model) {
     List<User> allUsers = userService.findAll();
@@ -24,6 +26,7 @@ public class IndexController {
     return "index";
   }
 
+  //Controller will add new user to Data Base and redirect us to /
   @RequestMapping(value = "/adduser", method = RequestMethod.POST)
   public String addUser(@RequestParam("name") String name) {
     User newUser = new User();
@@ -32,6 +35,7 @@ public class IndexController {
     return "redirect:/";
   }
 
+  //Controller will delete  user by ID from Data Base and redirect us to /
   @RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
   public String deleteUser(@RequestParam("id") String idS) {
     try {
