@@ -1,7 +1,9 @@
 package com.guithub.service;
 
+import com.guithub.dao.UserCookieRepository;
 import com.guithub.dao.UserRepository;
 import com.guithub.entity.User;
+import com.guithub.entity.UserCookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class UserServiceImpl implements UserService {
 
   @Autowired
   UserRepository userRepository;
+
+  @Autowired
+  UserCookieRepository userCookieRepository;
 
   @Override
   public List<User> findAll() {
@@ -31,6 +36,9 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void deleteUser(long id) {
+    UserCookie userCookie = userCookieRepository.findByUserId(id);
+    long userCookieId = userCookie.getId();
+    userCookieRepository.delete(userCookieId);
     userRepository.delete(id);
   }
 

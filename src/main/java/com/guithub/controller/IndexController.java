@@ -60,6 +60,9 @@ public class IndexController {
   @RequestMapping(value = "/wrongpssword", method = RequestMethod.GET)
   String getWrongLoginPage(Model model) {
 
+    List<User> allUsers = userService.findAll();
+    model.addAttribute("users", allUsers);
+
     model.addAttribute("massage", "Неверно указон логин или пароль. Попробуйте еще раз.");
     return "index";
   }
@@ -67,6 +70,9 @@ public class IndexController {
   // Index Page if USER exist after registration
   @RequestMapping(value = "/userexist", method = RequestMethod.GET)
   String getUserExistPage(Model model) {
+
+    List<User> allUsers = userService.findAll();
+    model.addAttribute("users", allUsers);
 
     model.addAttribute("massage", "Пользователь с таким логином уже существует.");
     return "index";
