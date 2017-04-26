@@ -14,33 +14,33 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-  @Autowired
-  UserService userService;
+    @Autowired
+    UserService userService;
 
-  @RequestMapping(value = "/", method = RequestMethod.GET)
-  public String getIndexPage(Model model) {
-    List<User> allUsers = userService.findAll();
-    model.addAttribute("users", allUsers);
-    return "index";
-  }
-
-  @RequestMapping(value = "/adduser", method = RequestMethod.POST)
-  public String addUser(@RequestParam("name") String name) {
-    User newUser = new User();
-    newUser.setUsername(name);
-    userService.saveAndFlush(newUser);
-    return "redirect:/";
-  }
-
-  @RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
-  public String deleteUser(@RequestParam("id") String idS) {
-    try {
-      long id = Long.parseLong(idS);
-      userService.deleteUser(id);
-    } catch (Exception e1) {
-      System.out.println(e1);
-      return "redirect:/";
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String getIndexPage(Model model) {
+        List<User> allUsers = userService.findAll();
+        model.addAttribute("users", allUsers);
+        return "index";
     }
-    return "redirect:/";
-  }
+
+    @RequestMapping(value = "/adduser", method = RequestMethod.POST)
+    public String addUser(@RequestParam("name") String name) {
+        User newUser = new User();
+        newUser.setUsername(name);
+        userService.saveAndFlush(newUser);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
+    public String deleteUser(@RequestParam("id") String idS) {
+        try {
+            long id = Long.parseLong(idS);
+            userService.deleteUser(id);
+        } catch (Exception e1) {
+            System.out.println(e1);
+            return "redirect:/";
+        }
+        return "redirect:/";
+    }
 }
