@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-  List<User> findAll();
+    List<User> findAll();
 
-  User saveAndFlush(User user);
+    User saveAndFlush(User user);
 
-  User findOne(long id);
+    User findOne(long id);
 }
