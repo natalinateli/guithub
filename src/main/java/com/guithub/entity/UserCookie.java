@@ -15,47 +15,47 @@ import javax.persistence.Table;
 @Table(name = "cookie")
 public class UserCookie {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id")
-  private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private long id;
 
-  @Column(name = "uuid")
-  private String uuId;
+    @Column(name = "uuid")
+    private String uuId;
 
-  @OneToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id")
-  private User user;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-  public UserCookie() {
-  }
+    public UserCookie() {
+    }
 
-  public UserCookie(String uuId, User user) {
-    this.uuId = uuId;
-    this.user = user;
-  }
+    public UserCookie(String uuId, User user) {
+        this.uuId = uuId;
+        this.user = user;
+    }
 
-  public long getId() {
-    return id;
-  }
+    public long getId() {
+        return id;
+    }
 
-  public void setId(long id) {
-    this.id = id;
-  }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-  public String getUuId() {
-    return uuId;
-  }
+    public String getUuId() {
+        return uuId;
+    }
 
-  public void setUuId(String uuId) {
-    this.uuId = uuId;
-  }
+    public void setUuId(String uuId) {
+        this.uuId = uuId;
+    }
 
-  public User getUser() {
-    return user;
-  }
+    public User getUser() {
+        return user;
+    }
 
-  public void setUser(User user) {
-    this.user = user;
-  }
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

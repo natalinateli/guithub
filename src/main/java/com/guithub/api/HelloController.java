@@ -12,14 +12,14 @@ import java.util.List;
 @RestController
 public class HelloController {
 
-  @Autowired
-  UserService userService;
+    @Autowired
+    UserService userService;
 
-  // Method will return list of users from Data Base
-  @RequestMapping("/users")
-  public List<User> index() {
-    List<User> users = userService.findAll();
-    return users;
-  }
+    // Method will return list of users from Data Base
+    @RequestMapping("/users")
+    public List<User> index() {
+        List<User> users = userService.findAll();
+        return users;
+    }
 
 }

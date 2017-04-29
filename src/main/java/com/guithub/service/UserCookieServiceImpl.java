@@ -11,31 +11,31 @@ import java.util.UUID;
 @Service("UserCookieService")
 public class UserCookieServiceImpl implements UserCookieService {
 
-  @Autowired
-  UserCookieRepository userCookieRepository;
+    @Autowired
+    UserCookieRepository userCookieRepository;
 
-  @Override
-  public void setCookie(User user) {
+    @Override
+    public void setCookie(User user) {
 
-    UserCookie userCookie = userCookieRepository.findByUserId(user.getId());
-    String uuID;
-    uuID = UUID.randomUUID().toString();
-    if (userCookie != null) {
-      userCookieRepository.delete(userCookie);
+        UserCookie userCookie = userCookieRepository.findByUserId(user.getId());
+        String uuID;
+        uuID = UUID.randomUUID().toString();
+        if (userCookie != null) {
+            userCookieRepository.delete(userCookie);
+        }
+        userCookie = new UserCookie();
+        userCookie.setUser(user);
+        userCookie.setUuId(uuID);
+        userCookieRepository.saveAndFlush(userCookie);
     }
-    userCookie = new UserCookie();
-    userCookie.setUser(user);
-    userCookie.setUuId(uuID);
-    userCookieRepository.saveAndFlush(userCookie);
-  }
 
-  @Override
-  public UserCookie findByUserId(long userId) {
-    return userCookieRepository.findByUserId(userId);
-  }
+    @Override
+    public UserCookie findByUserId(long userId) {
+        return userCookieRepository.findByUserId(userId);
+    }
 
-  @Override
-  public UserCookie findByuuId(String uuId) {
-    return userCookieRepository.findByuuId(uuId);
-  }
+    @Override
+    public UserCookie findByuuId(String uuId) {
+        return userCookieRepository.findByuuId(uuId);
+    }
 }

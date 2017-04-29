@@ -5,9 +5,9 @@ import com.guithub.entity.UserCookie;
 
 public interface UserCookieService {
 
-  void setCookie(User user);
+    void setCookie(User user);
 
-  UserCookie findByUserId(long userId);
+    UserCookie findByUserId(long userId);
 
-  UserCookie findByuuId(String uuId);
+    UserCookie findByuuId(String uuId);
 }

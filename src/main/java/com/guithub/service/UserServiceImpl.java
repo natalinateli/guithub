@@ -13,47 +13,47 @@ import java.util.List;
 @Service("UserService")
 public class UserServiceImpl implements UserService {
 
-  @Autowired
-  UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
-  @Autowired
-  UserCookieRepository userCookieRepository;
+    @Autowired
+    UserCookieRepository userCookieRepository;
 
-  @Override
-  public List<User> findAll() {
-    return userRepository.findAll();
-  }
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
 
-  @Override
-  public User saveAndFlush(User user) {
-    return userRepository.saveAndFlush(user);
-  }
+    @Override
+    public User saveAndFlush(User user) {
+        return userRepository.saveAndFlush(user);
+    }
 
-  @Override
-  public User findOne(long id) {
-    return userRepository.findOne(id);
-  }
+    @Override
+    public User findOne(long id) {
+        return userRepository.findOne(id);
+    }
 
-  @Override
-  public void deleteUser(long id) {
-    UserCookie userCookie = userCookieRepository.findByUserId(id);
-    long userCookieId = userCookie.getId();
-    userCookieRepository.delete(userCookieId);
-    userRepository.delete(id);
-  }
+    @Override
+    public void deleteUser(long id) {
+        UserCookie userCookie = userCookieRepository.findByUserId(id);
+        long userCookieId = userCookie.getId();
+        userCookieRepository.delete(userCookieId);
+        userRepository.delete(id);
+    }
 
-  @Override
-  public User getOne(String username) {
-    return userRepository.getOne(username);
-  }
+    @Override
+    public User getOne(String username) {
+        return userRepository.getOne(username);
+    }
 
-  @Override
-  public String password(String username) {
-    return userRepository.password(username);
-  }
+    @Override
+    public String password(String username) {
+        return userRepository.password(username);
+    }
 
-  @Override
-  public int ifUserExist(String username) {
-    return userRepository.ifUserExist(username);
-  }
+    @Override
+    public int ifUserExist(String username) {
+        return userRepository.ifUserExist(username);
+    }
 }

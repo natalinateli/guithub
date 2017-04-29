@@ -19,72 +19,72 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class IndexController {
 
-  @Autowired
-  UserService userService;
+    @Autowired
+    UserService userService;
 
-  @Autowired
-  UserCookieService userCookieService;
+    @Autowired
+    UserCookieService userCookieService;
 
-  //Controller will return Index Page with list of Users from Data Base
-  @RequestMapping(value = "/", method = RequestMethod.GET)
-  public String getIndexPage(@CookieValue(name = "param", required = false) String cookie,
-      Model model) {
-    List<User> allUsers = userService.findAll();
-    model.addAttribute("users", allUsers);
-    //If no cookies the user in not authorized
-    if (cookie == null) {
-      return "index";
+    //Controller will return Index Page with list of Users from Data Base
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String getIndexPage(@CookieValue(name = "param", required = false) String cookie,
+            Model model) {
+        List<User> allUsers = userService.findAll();
+        model.addAttribute("users", allUsers);
+        //If no cookies the user in not authorized
+        if (cookie == null) {
+            return "test";
+        }
+        User user = userCookieService.findByuuId(cookie).getUser();
+        String username = user.getUsername();
+        model.addAttribute("username", username);
+        model.addAttribute("cookie", cookie);
+        return "test";
     }
-    User user = userCookieService.findByuuId(cookie).getUser();
-    String username = user.getUsername();
-    model.addAttribute("username", username);
-    model.addAttribute("cookie", cookie);
-    return "index";
-  }
 
 
-  //Controller will delete  user by ID from Data Base and redirect us to /
-  @RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
-  public String deleteUser(@RequestParam("id") String idS) {
-    try {
-      long id = Long.parseLong(idS);
-      userService.deleteUser(id);
-    } catch (Exception e1) {
-      System.out.println(e1);
-      return "redirect:/";
+    //Controller will delete  user by ID from Data Base and redirect us to /
+    @RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
+    public String deleteUser(@RequestParam("id") String idS) {
+        try {
+            long id = Long.parseLong(idS);
+            userService.deleteUser(id);
+        } catch (Exception e1) {
+            System.out.println(e1);
+            return "redirect:/";
+        }
+        return "redirect:/";
     }
-    return "redirect:/";
-  }
 
-  // Index Page with wrong login entered
-  @RequestMapping(value = "/wrongpssword", method = RequestMethod.GET)
-  String getWrongLoginPage(Model model) {
+    // Index Page with wrong login entered
+    @RequestMapping(value = "/wrongpssword", method = RequestMethod.GET)
+    String getWrongLoginPage(Model model) {
 
-    List<User> allUsers = userService.findAll();
-    model.addAttribute("users", allUsers);
+        List<User> allUsers = userService.findAll();
+        model.addAttribute("users", allUsers);
 
-    model.addAttribute("massage", "Неверно указон логин или пароль. Попробуйте еще раз.");
-    return "index";
-  }
+        model.addAttribute("massage", "Неверно указон логин или пароль. Попробуйте еще раз.");
+        return "test";
+    }
 
-  // Index Page if USER exist after registration
-  @RequestMapping(value = "/userexist", method = RequestMethod.GET)
-  String getUserExistPage(Model model) {
+    // Index Page if USER exist after registration
+    @RequestMapping(value = "/userexist", method = RequestMethod.GET)
+    String getUserExistPage(Model model) {
 
-    List<User> allUsers = userService.findAll();
-    model.addAttribute("users", allUsers);
+        List<User> allUsers = userService.findAll();
+        model.addAttribute("users", allUsers);
 
-    model.addAttribute("massage", "Пользователь с таким логином уже существует.");
-    return "index";
-  }
+        model.addAttribute("massage", "Пользователь с таким логином уже существует.");
+        return "test";
+    }
 
-  // Exit and delete cookies
-  @RequestMapping(value = "/exit", method = RequestMethod.GET)
-  String getExitPage(HttpServletResponse response) {
+    // Exit and delete cookies
+    @RequestMapping(value = "/exit", method = RequestMethod.GET)
+    String getExitPage(HttpServletResponse response) {
 
-    Cookie cookie = new Cookie("param", "null");
-    cookie.setMaxAge(0);
-    response.addCookie(cookie);
-    return "redirect:/";
-  }
+        Cookie cookie = new Cookie("param", "null");
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        return "redirect:/";
+    }
 }

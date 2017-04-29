@@ -6,17 +6,17 @@ import java.util.List;
 
 public interface UserService {
 
-  List<User> findAll();
+    List<User> findAll();
 
-  User saveAndFlush(User user);
+    User saveAndFlush(User user);
 
-  User findOne(long id);
+    User findOne(long id);
 
-  void deleteUser(long id);
+    void deleteUser(long id);
 
-  User getOne(String username);
+    User getOne(String username);
 
-  String password(String username);
+    String password(String username);
 
-  int ifUserExist(String username);
+    int ifUserExist(String username);
 }

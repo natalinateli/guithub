@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserCookieRepository extends JpaRepository<UserCookie, Long> {
 
-  UserCookie findByUserId(long userId);
+    UserCookie findByUserId(long userId);
 
-  UserCookie findByuuId(String uuId);
+    UserCookie findByuuId(String uuId);
 }

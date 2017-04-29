@@ -17,47 +17,47 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class RegController {
 
-  @Autowired
-  UserService userService;
+    @Autowired
+    UserService userService;
 
-  @Autowired
-  UserCookieService userCookieService;
+    @Autowired
+    UserCookieService userCookieService;
 
-  // life period of cookies
-  private static final int COOKIE_AGE = 2693743;
+    // life period of cookies
+    private static final int COOKIE_AGE = 2693743;
 
-  //Controller will reg new user and redirect us to "/"
-  @RequestMapping(value = "/reg", method = RequestMethod.POST)
-  String getRegitrationNewUser(@CookieValue(name = "param", required = false) String cookieReg,
-      @RequestParam(value = "username") String username,
-      @RequestParam(value = "password") String password,
-      HttpServletResponse response) {
-    // If have cookies redirect to main page
-    if (cookieReg != null) {
-      return "redirect:/";
+    //Controller will reg new user and redirect us to "/"
+    @RequestMapping(value = "/reg", method = RequestMethod.POST)
+    String getRegitrationNewUser(@CookieValue(name = "param", required = false) String cookieReg,
+            @RequestParam(value = "username") String username,
+            @RequestParam(value = "password") String password,
+            HttpServletResponse response) {
+        // If have cookies redirect to main page
+        if (cookieReg != null) {
+            return "redirect:/";
+        }
+        //Check if username is free
+        int check = userService.ifUserExist(username);
+        //If it is free
+        if (check == 0) {
+            // Create new user
+            String md5Password = DigestUtils.md5Hex(password);
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(md5Password);
+            //Save user in data base
+            user = userService.saveAndFlush(user);
+            userCookieService.setCookie(user);
+            //Set cookies for new user
+            String uuID = userCookieService.findByUserId(user.getId()).getUuId();
+            Cookie cookie = new Cookie("param", uuID);
+            cookie.setMaxAge(COOKIE_AGE);
+            response.addCookie(cookie);
+            return "redirect:/";
+        } else {
+            //If it is not free
+            return "redirect:/userexist";
+        }
     }
-    //Check if username is free
-    int check = userService.ifUserExist(username);
-    //If it is free
-    if (check == 0) {
-      // Create new user
-      String md5Password = DigestUtils.md5Hex(password);
-      User user = new User();
-      user.setUsername(username);
-      user.setPassword(md5Password);
-      //Save user in data base
-      user = userService.saveAndFlush(user);
-      userCookieService.setCookie(user);
-      //Set cookies for new user
-      String uuID = userCookieService.findByUserId(user.getId()).getUuId();
-      Cookie cookie = new Cookie("param", uuID);
-      cookie.setMaxAge(COOKIE_AGE);
-      response.addCookie(cookie);
-      return "redirect:/";
-    } else {
-      //If it is not free
-      return "redirect:/userexist";
-    }
-  }
 
 }
