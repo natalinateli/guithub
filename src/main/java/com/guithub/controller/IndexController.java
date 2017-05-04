@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
 
 //Simple test controller
 @Controller
@@ -28,7 +29,7 @@ public class IndexController {
     //Controller will return Index Page with list of Users from Data Base
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getIndexPage(@CookieValue(name = "param", required = false) String cookie,
-            Model model) {
+                               Model model) {
         List<User> allUsers = userService.findAll();
         model.addAttribute("users", allUsers);
         //If no cookies the user in not authorized

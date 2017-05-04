@@ -16,21 +16,19 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class LoginController {
 
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    UserCookieService userCookieService;
-
     // life period of cookies
     private static final int COOKIE_AGE = 2693743;
+    @Autowired
+    UserService userService;
+    @Autowired
+    UserCookieService userCookieService;
 
     //Controller will login user and redirect us to "/"
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     String getLogin(@CookieValue(name = "param", required = false) String cookieLogin,
-            @RequestParam(value = "username") String username,
-            @RequestParam(value = "password") String password,
-            HttpServletResponse response) {
+                    @RequestParam(value = "username") String username,
+                    @RequestParam(value = "password") String password,
+                    HttpServletResponse response) {
         // If have cookies redirect to main page
         if (cookieLogin != null) {
             return "redirect:/";
@@ -44,7 +42,7 @@ public class LoginController {
         if (md5Password.equals(hashPassword)) {
             userCookieService.setCookie(userService.getOne(username));
             String uuID = userCookieService.findByUserId(userService.getOne(username).getId())
-                    .getUuId();
+                .getUuId();
             //Set his cookeis from data base
             Cookie cookie = new Cookie("param", uuID);
             cookie.setMaxAge(COOKIE_AGE);

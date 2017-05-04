@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Index</title>
-  <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+    <meta charset="UTF-8"/>
+    <title>Index</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
 </head>
 <body>
 
@@ -11,39 +11,39 @@
 <h2>Here is the list of all our users from DB:</h2>
 
 <div th:each="user : ${users}">
-  <span th:text="${user.id}">user id</span> <span th:text="${user.username}">user names</span>
+    <span th:text="${user.id}">user id</span> <span th:text="${user.username}">user names</span>
 </div>
 
 <div>
-  <span th:text="${massage}"></span>
+    <span th:text="${massage}"></span>
 </div>
 
 <div th:if="!${cookie}">
-  <h2>Registrate new user:</h2>
-  <form method="post" action="/reg">
-    <div>Username:<input type="text" name="username"/></div>
-    <div>Password:<input type="password" name="password"/></div>
-    <div><input type="submit" value="Regístrate"/></div>
-  </form>
+    <h2>Registrate new user:</h2>
+    <form method="post" action="/reg">
+        <div>Username:<input type="text" name="username"/></div>
+        <div>Password:<input type="password" name="password"/></div>
+        <div><input type="submit" value="Regístrate"/></div>
+    </form>
 
-  <h2>Login:</h2>
-  <form method="post" action="/login">
-    <div>Username:<input type="text" name="username"/></div>
-    <div>Password:<input type="password" name="password"/></div>
-    <div><input type="submit" value="Login"/></div>
-  </form>
+    <h2>Login:</h2>
+    <form method="post" action="/login">
+        <div>Username:<input type="text" name="username"/></div>
+        <div>Password:<input type="password" name="password"/></div>
+        <div><input type="submit" value="Login"/></div>
+    </form>
 </div>
 
 <div th:if="${cookie}">
-  <a href="/exit">Exit</a>
+    <a href="/exit">Exit</a>
 </div>
 
 <div th:if="!${cookie}">
-  <h2>Delete user by ID:</h2>
-  <form method="post" action="/deleteuser">
-    <div>ID:<input type="text" name="id"/></div>
-    <div><input type="submit"/></div>
-  </form>
+    <h2>Delete user by ID:</h2>
+    <form method="post" action="/deleteuser">
+        <div>ID:<input type="text" name="id"/></div>
+        <div><input type="submit"/></div>
+    </form>
 </div>
 
 </body>

@@ -17,21 +17,19 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class RegController {
 
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    UserCookieService userCookieService;
-
     // life period of cookies
     private static final int COOKIE_AGE = 2693743;
+    @Autowired
+    UserService userService;
+    @Autowired
+    UserCookieService userCookieService;
 
     //Controller will reg new user and redirect us to "/"
     @RequestMapping(value = "/reg", method = RequestMethod.POST)
     String getRegitrationNewUser(@CookieValue(name = "param", required = false) String cookieReg,
-            @RequestParam(value = "username") String username,
-            @RequestParam(value = "password") String password,
-            HttpServletResponse response) {
+                                 @RequestParam(value = "username") String username,
+                                 @RequestParam(value = "password") String password,
+                                 HttpServletResponse response) {
         // If have cookies redirect to main page
         if (cookieReg != null) {
             return "redirect:/";
