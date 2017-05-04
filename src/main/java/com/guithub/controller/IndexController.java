@@ -36,8 +36,7 @@ public class IndexController {
         try {
             long id = Long.parseLong(idS);
             userService.deleteUser(id);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
             return "redirect:/";
         }
