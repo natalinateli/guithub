@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+//Test controller for REST API
 @RestController
 public class HelloController {
 
     @Autowired
     UserService userService;
 
+    // Method will return list of users from Data Base
     @RequestMapping("/users")
     public List<User> index() {
         List<User> users = userService.findAll();
