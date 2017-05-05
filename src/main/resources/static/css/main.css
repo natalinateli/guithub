@@ -1,3 +1,5 @@
+
+
 * {
 	box-sizing: border-box;
 }
@@ -8,6 +10,8 @@ body {
 	font-size: 62.5%;
 	font-family: Arial, sans-serif;
 }
+
+/* Style for INDEX.html*/
 
 header {
 	margin: 0 auto;
@@ -173,4 +177,51 @@ footer {
 	to {
 		width:250px;
 	}
+}
+
+/* Style for NOTESVIEW.html*/
+
+#notes {
+	background-color: #48d4fc;
+}
+
+.version-content {
+	display: flex;
+	padding-top: 20px;
+}
+
+.version-info {
+	padding: 70px 15px 0 15px;
+	width: 500px;
+	border-bottom: 1px solid #efefef;
+}
+
+.create-date {
+	font-size: 1.2em;
+}
+
+.create-date span {
+	float: left;
+	padding: 0 10px 0 0;
+}
+
+.version-view {
+	display: flex;
+	width: 100%;
+	padding: 0 15px;
+}
+
+.version-main {
+	width: 49%;
+	height: 500px;
+	border: 1px solid #515151;
+	padding:10px 10px;
+}
+
+.version-reg {
+	width: 49%;
+	height: 500px;
+	margin-left: 10px;
+	padding:10px 10px;
+	border: 1px dashed #515151;
 }
