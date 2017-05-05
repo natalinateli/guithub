@@ -23,6 +23,12 @@ public class LoginController {
     @Autowired
     UserCookieService userCookieService;
 
+    @RequestMapping(value = "/signin", method = RequestMethod.GET)
+    String getSignInPage() {
+
+        return "signin";
+    }
+
     //Controller will login user and redirect us to "/"
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     String getLogin(@CookieValue(name = "param", required = false) String cookieLogin,
@@ -31,7 +37,7 @@ public class LoginController {
                     HttpServletResponse response) {
         // If have cookies redirect to main page
         if (cookieLogin != null) {
-            return "redirect:/";
+            return "redirect:/test";
         }
 
         // Get entered password and get password from data base

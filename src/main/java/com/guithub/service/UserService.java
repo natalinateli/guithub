@@ -19,4 +19,6 @@ public interface UserService {
     String password(String username);
 
     int ifUserExist(String username);
+
+    int ifUserEmailExist(String email);
 }

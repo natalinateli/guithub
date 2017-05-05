@@ -23,4 +23,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value = "SELECT u.password FROM user u WHERE u.username = ?1", nativeQuery = true)
     String password(String username);
+
+    @Query(value = "SELECT  COUNT(*)  FROM user u WHERE u.email = ?1", nativeQuery = true)
+    int ifUserEmailExist(String email);
 }

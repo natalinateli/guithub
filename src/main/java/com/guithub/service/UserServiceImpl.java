@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService {
     public int ifUserExist(String username) {
         return userRepository.ifUserExist(username);
     }
+
+    @Override
+    public int ifUserEmailExist(String email) {
+        return userRepository.ifUserEmailExist(email);
+    }
 }

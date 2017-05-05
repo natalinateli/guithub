@@ -20,26 +20,28 @@ stave.addClef("treble").addTimeSignature("4/4");
 stave.setContext(context).draw();
 
 var notes = [
-  new VF.StaveNote({clef: "treble", keys: ["e##/5"], duration: "8d" }).
-	  addAccidental(0, new VF.Accidental("##")).addDotToAll(),
-  new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: "8d" }).
-  	addAccidental(0, new VF.Accidental("b")),
-  new VF.StaveNote({clef: "treble", keys: ["c/4"], duration: "8" }),
-  new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "16" }),
-  new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "16" }).
-	  addAccidental(0, new VF.Accidental("b")),
-  new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "16" }),
-  new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "16" }).
-  	addAccidental(0, new VF.Accidental("#")),
-  new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "32" }),
-  new VF.StaveNote({clef: "treble", keys: ["a/4"], duration: "32" }),
-  new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "16" }),
-  new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "q" })
+    new VF.StaveNote({
+        clef: "treble",
+        keys: ["e##/5"],
+        duration: "8d"
+    }).addAccidental(0, new VF.Accidental("##")).addDotToAll(),
+    new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: "8d"}).addAccidental(0, new VF.Accidental("b")),
+    new VF.StaveNote({clef: "treble", keys: ["c/4"], duration: "8"}),
+    new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "16"}),
+    new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "16"}).addAccidental(0, new VF.Accidental("b")),
+    new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "16"}),
+    new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "16"}).addAccidental(0, new VF.Accidental("#")),
+    new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "32"}),
+    new VF.StaveNote({clef: "treble", keys: ["a/4"], duration: "32"}),
+    new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "16"}),
+    new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "q"})
 ];
 
 var beams = VF.Beam.generateBeams(notes);
 Vex.Flow.Formatter.FormatAndDraw(context, stave, notes);
-beams.forEach(function(b) {b.setContext(context).draw()})
+beams.forEach(function (b) {
+    b.setContext(context).draw()
+})
 
 
 // Create an SVG renderer and attach it to the DIV element named "boo".
@@ -62,23 +64,25 @@ stave.addClef("treble").addTimeSignature("4/4");
 stave.setContext(context).draw();
 
 var notes = [
-  new VF.StaveNote({clef: "treble", keys: ["e##/5"], duration: "8d" }).
-    addAccidental(0, new VF.Accidental("##")).addDotToAll(),
-  new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: "8d" }).
-    addAccidental(0, new VF.Accidental("b")),
-  new VF.StaveNote({clef: "treble", keys: ["c/4"], duration: "8" }),
-  new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "16" }),
-  new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "16" }).
-    addAccidental(0, new VF.Accidental("b")),
-  new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "16" }),
-  new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "16" }).
-    addAccidental(0, new VF.Accidental("#")),
-  new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "32" }),
-  new VF.StaveNote({clef: "treble", keys: ["a/4"], duration: "32" }),
-  new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "16" }),
-  new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "q" })
+    new VF.StaveNote({
+        clef: "treble",
+        keys: ["e##/5"],
+        duration: "8d"
+    }).addAccidental(0, new VF.Accidental("##")).addDotToAll(),
+    new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: "8d"}).addAccidental(0, new VF.Accidental("b")),
+    new VF.StaveNote({clef: "treble", keys: ["c/4"], duration: "8"}),
+    new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "16"}),
+    new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "16"}).addAccidental(0, new VF.Accidental("b")),
+    new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "16"}),
+    new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "16"}).addAccidental(0, new VF.Accidental("#")),
+    new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "32"}),
+    new VF.StaveNote({clef: "treble", keys: ["a/4"], duration: "32"}),
+    new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "16"}),
+    new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "q"})
 ];
 
 var beams = VF.Beam.generateBeams(notes);
 Vex.Flow.Formatter.FormatAndDraw(context, stave, notes);
-beams.forEach(function(b) {b.setContext(context).draw()})
+beams.forEach(function (b) {
+    b.setContext(context).draw()
+})

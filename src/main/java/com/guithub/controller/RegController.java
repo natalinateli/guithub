@@ -29,19 +29,27 @@ public class RegController {
     String getRegitrationNewUser(@CookieValue(name = "param", required = false) String cookieReg,
                                  @RequestParam(value = "username") String username,
                                  @RequestParam(value = "password") String password,
+                                 @RequestParam(value = "email") String email,
                                  HttpServletResponse response) {
         // If have cookies redirect to main page
         if (cookieReg != null) {
             return "redirect:/";
         }
-        //Check if username is free
-        int check = userService.ifUserExist(username);
+        //if email, password or username is empty
+        if (username == "" || email == "" || password == "") {
+            return "redirect:/wrongpssword";
+        }
+        //Check if username and email is free
+
+        int checkName = userService.ifUserExist(username);
+        int checkEmail = userService.ifUserEmailExist(email);
         //If it is free
-        if (check == 0) {
+        if (checkName == 0 && checkEmail == 0) {
             // Create new user
             String md5Password = DigestUtils.md5Hex(password);
             User user = new User();
             user.setUsername(username);
+            user.setEmail(email);
             user.setPassword(md5Password);
             //Save user in data base
             user = userService.saveAndFlush(user);
@@ -53,7 +61,7 @@ public class RegController {
             response.addCookie(cookie);
             return "redirect:/";
         } else {
-            //If it is not free
+            //If it is not free username or email
             return "redirect:/userexist";
         }
     }
