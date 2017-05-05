@@ -15,12 +15,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findOne(long id);
 
-    @Query(value = "SELECT * FROM User u where u.username = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM user u where u.username = ?1", nativeQuery = true)
     User getOne(String username);
 
-    @Query(value = "SELECT  COUNT(*)  FROM User u WHERE u.username = ?1", nativeQuery = true)
+    @Query(value = "SELECT  COUNT(*)  FROM user u WHERE u.username = ?1", nativeQuery = true)
     int ifUserExist(String username);
 
-    @Query(value = "SELECT u.password FROM User u WHERE u.username = ?1", nativeQuery = true)
+    @Query(value = "SELECT u.password FROM user u WHERE u.username = ?1", nativeQuery = true)
     String password(String username);
 }
